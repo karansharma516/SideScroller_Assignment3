@@ -77,12 +77,14 @@
     <Content Include="assets\images\ring.png" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
+    <Content Include="Scripts\game.js" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
     <Content Include="Scripts\lib\preloadjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\soundjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\Stats.js" />
     <Content Include="Scripts\lib\tweenjs-0.6.0.min.js" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\game.js.map" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -90,6 +92,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\game.ts" />
+    <TypeScriptCompile Include="Scripts\objects\background.ts" />
+    <TypeScriptCompile Include="Scripts\objects\bee.ts" />
+    <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
+    <TypeScriptCompile Include="Scripts\objects\nemo.ts" />
+    <TypeScriptCompile Include="Scripts\objects\ring.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
