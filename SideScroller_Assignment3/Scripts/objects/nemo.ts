@@ -15,7 +15,7 @@
 
             this.x = 80;
 
-           
+            createjs.Sound.play("engine", { loop: -1 });
 
         }
 

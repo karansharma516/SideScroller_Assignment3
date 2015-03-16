@@ -6,7 +6,7 @@
         constructor() {
             super("bee");
 
-           
+            this.soundString = "thunder";
 
             this._reset();
 

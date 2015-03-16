@@ -7,7 +7,7 @@
             super("ring");
 
             this._dx = 5;
-         
+            this.soundString = "yay";
 
             this._reset();
 
