@@ -15,7 +15,9 @@
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="states/play.ts" />
-/// <reference path="../constants.ts" />
+/// <reference path="states/menu.ts" />
+/// <reference path="states/gameover.ts" />
+
 
 
 
@@ -27,8 +29,23 @@ var stage: createjs.Stage;
 var assetLoader: createjs.LoadQueue;
 
 // Game Objects
-var play: states.Play;
 
+var finalText: string;
+
+// Score Variables
+var finalScore: number = 0;
+var highScore = 0;
+var score: objects.ScoreBoard;
+
+// state variables
+var currentState: number;
+var currentStateFunction: any;
+var stateChanged: boolean = false;
+
+
+// Game Objects
+var gameOver: states.GameOver;
+var gamePlay: states.Play;
 
 
 // asset manifest - array of asset objects
@@ -36,7 +53,8 @@ var manifest = [
     { id: "bee", src: "assets/images/bee.png" },
     { id: "ring", src: "assets/images/ring.png" },
     { id: "background", src: "assets/images/background.png" },
-    { id: "nemo", src: "assets/images/nemo.png" },
+    { id: "nemo", src: "assets/images/Nemo.png" },
+    { id: "tryAgainButton", src: "assets/images/tryagain.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
@@ -61,7 +79,8 @@ function init() {
     createjs.Ticker.addEventListener("tick", gameLoop);
     setupStats();
 
-    main();
+    currentState = constants.PLAY_STATE;
+    changeState(currentState);
 }
 
 // UTILITY METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -77,21 +96,35 @@ function setupStats() {
 function gameLoop() {
     stats.begin(); // Begin metering
 
-    play.update();
+    if (stateChanged) {
+        changeState(currentState);
+        stateChanged = false;
+    }
+    else {
+        currentStateFunction.update();
+    }
 
-    stage.update(); // Refreshes our stage
-
+    stage.update();
     stats.end(); // End metering
 }
 
 
+function changeState(state: number): void {
+    // Launch Various "screens"
+    switch (state) {
+            
+        case constants.PLAY_STATE:
+            // instantiate game play screen
+            gamePlay = new states.Play();
+            currentStateFunction = gamePlay;
+            break;
 
+        case constants.GAME_OVER_STATE:
+            // instantiate game over screen
+            gameOver = new states.GameOver();
+            currentStateFunction = gameOver;
+            break;
 
-
-// Our Game Kicks off in here
-function main() {
-
-    // Instantiate my Play State
-    play = new states.Play();
-    
+    }
 }
+

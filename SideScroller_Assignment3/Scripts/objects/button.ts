@@ -4,10 +4,13 @@
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
 
         constructor(stringPath: string, x: number, y: number) {
-            super(stringPath);
+            super(assetLoader.getResult(stringPath));
 
-            this.x;
-            this.y;
+            this.regX = this.getBounds().width * 0.5;
+            this.regY = this.getBounds().height * 0.5;
+
+            this.x = x;
+            this.y = y;
             this.addEventListener("mouseover", this._buttonOver);
             this.addEventListener("mouseout", this._buttonOut);
         }

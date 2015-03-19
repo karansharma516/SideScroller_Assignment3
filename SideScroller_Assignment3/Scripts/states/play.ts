@@ -7,6 +7,8 @@
 /// <reference path="../objects/nemo.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../../constants.ts" />
+/// <reference path="gameover.ts" />
+
 
 
 
@@ -27,17 +29,17 @@ module states {
             // Instantiate Game Container
             this.game = new createjs.Container();
 
-            // Add ocean to game
+            // Add background to game
             this.background = new objects.Background();
             this.game.addChild(this.background);
 
 
-            // Add island to game
+            // Add ring to game
             this.ring = new objects.Ring();
             this.game.addChild(this.ring);
 
 
-            // Add plane to game
+            // Add nemo to game
             this.nemo = new objects.Nemo();
             this.game.addChild(this.nemo);
 
@@ -111,9 +113,21 @@ module states {
             this.scoreboard.update();
 
             if (this.scoreboard.lives < 1) {
+                createjs.Sound.play("thunder");
                 createjs.Sound.stop();
+
                 this.game.removeAllChildren();
                 stage.removeAllChildren();
+
+                if (finalScore > highScore) {
+                   highScore = finalScore;
+                 }
+
+                finalText = "YOU LOST";
+                finalScore = this.scoreboard.score;
+              
+                currentState = constants.GAME_OVER_STATE;
+                stateChanged = true;
             }
         } // update method end
 

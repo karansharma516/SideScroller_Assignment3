@@ -72,8 +72,10 @@
   <ItemGroup>
     <Content Include="assets\images\background.png" />
     <Content Include="assets\images\bee.png" />
-    <Content Include="assets\images\nemo.png" />
+    <Content Include="assets\images\Nemo.png" />
+    <Content Include="assets\images\playagain.png" />
     <Content Include="assets\images\ring.png" />
+    <Content Include="assets\images\tryagain.png" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
     <Content Include="Scripts\game.js" />
@@ -101,6 +103,8 @@
     <TypeScriptCompile Include="Scripts\objects\nemo.ts" />
     <TypeScriptCompile Include="Scripts\objects\ring.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
+    <TypeScriptCompile Include="Scripts\states\gameover.ts" />
+    <TypeScriptCompile Include="Scripts\states\menu.ts" />
     <TypeScriptCompile Include="Scripts\states\play.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
