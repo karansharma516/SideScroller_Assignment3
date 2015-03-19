@@ -100,6 +100,7 @@
     <TypeScriptCompile Include="Scripts\objects\Label.ts" />
     <TypeScriptCompile Include="Scripts\objects\nemo.ts" />
     <TypeScriptCompile Include="Scripts\objects\ring.ts" />
+    <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />

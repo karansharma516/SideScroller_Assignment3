@@ -12,6 +12,7 @@
 /// <reference path="objects/ring.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/label.ts" />
+/// <reference path="objects/scoreboard.ts" />
 // Game Variables
 var game;
 var stats = new Stats();
@@ -21,8 +22,9 @@ var assetLoader;
 // Game Objects
 var nemo;
 var ring;
-var bee = [];
+var bees = [];
 var background;
+var scoreboard;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "bee", src: "assets/images/bee.png" },
@@ -72,6 +74,14 @@ function checkCollision(collider) {
         if (!collider.isColliding) {
             createjs.Sound.play(collider.soundString);
             collider.isColliding = true;
+            switch (collider.name) {
+                case "ring":
+                    scoreboard.score += 100;
+                    break;
+                case "bee":
+                    scoreboard.lives--;
+                    break;
+            }
         }
     }
     else {
@@ -83,11 +93,19 @@ function gameLoop() {
     background.update();
     nemo.update();
     ring.update();
-    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-        bee[cloud].update();
-        checkCollision(bee[cloud]);
+    if (scoreboard.lives > 0) {
+        for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
+            bees[cloud].update();
+            checkCollision(bees[cloud]);
+        }
+        checkCollision(ring);
     }
-    checkCollision(ring);
+    scoreboard.update();
+    if (scoreboard.lives < 1) {
+        createjs.Sound.stop();
+        game.removeAllChildren();
+        stage.removeAllChildren();
+    }
     stage.update(); // Refreshes our stage
     stats.end(); // End metering
 }
@@ -105,9 +123,10 @@ function main() {
     nemo = new objects.Nemo();
     game.addChild(nemo);
     for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-        bee[cloud] = new objects.Bee();
-        game.addChild(bee[cloud]);
+        bees[cloud] = new objects.Bee();
+        game.addChild(bees[cloud]);
     }
+    scoreboard = new objects.ScoreBoard();
     stage.addChild(game);
 }
 //# sourceMappingURL=game.js.map

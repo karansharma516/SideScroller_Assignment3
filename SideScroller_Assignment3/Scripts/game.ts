@@ -13,6 +13,7 @@
 /// <reference path="objects/ring.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/label.ts" />
+/// <reference path="objects/scoreboard.ts" />
 
 // Game Variables
 var game: createjs.Container;
@@ -24,9 +25,9 @@ var assetLoader: createjs.LoadQueue;
 // Game Objects
 var nemo: objects.Nemo;
 var ring: objects.Ring;
-var bee: objects.Bee[] = [];
+var bees: objects.Bee[] = [];
 var background: objects.Background;
-
+var scoreboard: objects.ScoreBoard;
 
 
 // asset manifest - array of asset objects
@@ -88,6 +89,14 @@ function checkCollision(collider: objects.GameObject) {
         if (!collider.isColliding) {
             createjs.Sound.play(collider.soundString);
             collider.isColliding = true;
+            switch (collider.name) {
+                case "ring":
+                    scoreboard.score += 100;
+                    break;
+                case "bee":
+                    scoreboard.lives--;
+                    break;
+            }
         }
     } else {
         collider.isColliding = false;
@@ -102,13 +111,21 @@ function gameLoop() {
     nemo.update();
     ring.update();
 
-    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-        bee[cloud].update();
-        checkCollision(bee[cloud]);
+    if (scoreboard.lives > 0) {
+        for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
+            bees[cloud].update();
+            checkCollision(bees[cloud]);
+        }
+
+        checkCollision(ring);
     }
+    scoreboard.update();
 
-    checkCollision(ring);
-
+    if (scoreboard.lives < 1) {
+                createjs.Sound.stop();
+                game.removeAllChildren();
+                stage.removeAllChildren();
+            }
 
     stage.update(); // Refreshes our stage
 
@@ -141,9 +158,11 @@ function main() {
 
     // Add clouds to game
     for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-        bee[cloud] = new objects.Bee();
-        game.addChild(bee[cloud]);
+        bees[cloud] = new objects.Bee();
+        game.addChild(bees[cloud]);
     }
+
+    scoreboard = new objects.ScoreBoard();
 
     stage.addChild(game);
 
