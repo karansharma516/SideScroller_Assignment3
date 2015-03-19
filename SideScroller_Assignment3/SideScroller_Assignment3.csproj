@@ -73,6 +73,7 @@
     <Content Include="assets\images\background.png" />
     <Content Include="assets\images\bee.png" />
     <Content Include="assets\images\Nemo.png" />
+    <Content Include="assets\images\play.png" />
     <Content Include="assets\images\playagain.png" />
     <Content Include="assets\images\ring.png" />
     <Content Include="assets\images\tryagain.png" />

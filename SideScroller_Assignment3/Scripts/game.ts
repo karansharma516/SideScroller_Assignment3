@@ -46,6 +46,7 @@ var stateChanged: boolean = false;
 // Game Objects
 var gameOver: states.GameOver;
 var gamePlay: states.Play;
+var menu: states.Menu;
 
 
 // asset manifest - array of asset objects
@@ -55,6 +56,7 @@ var manifest = [
     { id: "background", src: "assets/images/background.png" },
     { id: "nemo", src: "assets/images/Nemo.png" },
     { id: "tryAgainButton", src: "assets/images/tryagain.png" },
+    { id: "playButton", src: "assets/images/play.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
@@ -79,7 +81,7 @@ function init() {
     createjs.Ticker.addEventListener("tick", gameLoop);
     setupStats();
 
-    currentState = constants.PLAY_STATE;
+    currentState = constants.MENU_STATE;
     changeState(currentState);
 }
 
@@ -113,6 +115,12 @@ function changeState(state: number): void {
     // Launch Various "screens"
     switch (state) {
             
+        case constants.MENU_STATE:
+            // instantiate menu screen
+            menu = new states.Menu();
+            currentStateFunction = menu;
+            break;
+
         case constants.PLAY_STATE:
             // instantiate game play screen
             gamePlay = new states.Play();
