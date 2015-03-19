@@ -62,7 +62,6 @@
     <Content Include="assets\audio\engine.ogg" />
     <Content Include="assets\audio\thunder.ogg" />
     <Content Include="assets\audio\yay.ogg" />
-    <Content Include="assets\images\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

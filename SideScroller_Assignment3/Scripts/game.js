@@ -9,6 +9,8 @@
 /// <reference path="objects/bee.ts" />
 /// <reference path="objects/ring.ts" />
 /// <reference path="objects/gameobject.ts" />
+// Game Variables
+var game;
 var stats = new Stats();
 var canvas;
 var stage;
@@ -88,18 +90,21 @@ function gameLoop() {
 }
 // Our Game Kicks off in here
 function main() {
+    // Instantiate Game Container
+    game = new createjs.Container();
     // Add ocean to game
     background = new objects.Background();
-    stage.addChild(background);
+    game.addChild(background);
     // Add island to game
     ring = new objects.Ring();
-    stage.addChild(ring);
+    game.addChild(ring);
     // Add plane to game
     nemo = new objects.Nemo();
-    stage.addChild(nemo);
+    game.addChild(nemo);
     for (var cloud = 3; cloud > 0; cloud--) {
         bee[cloud] = new objects.Bee();
-        stage.addChild(bee[cloud]);
+        game.addChild(bee[cloud]);
     }
+    stage.addChild(game);
 }
 //# sourceMappingURL=game.js.map
