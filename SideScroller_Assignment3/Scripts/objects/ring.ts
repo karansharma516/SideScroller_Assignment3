@@ -14,7 +14,7 @@
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        private _reset() {
+        public _reset() {
 
             // set the island to start at a random x value
 

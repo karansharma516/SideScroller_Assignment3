@@ -13,7 +13,7 @@
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        private _reset() {
+        public _reset() {
             this._dx = Math.floor(Math.random() * 5) + 5;
             this._dy = Math.floor(Math.random() * 4) - 2;
 

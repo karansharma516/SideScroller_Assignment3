@@ -8,10 +8,10 @@
         // PRIVATE INSTANCES VARIABLES +++++++++++++++++++++++++++++++++++++
         private _scoreLabel: createjs.Text;
         private _livesLabel: createjs.Text;
-        
+        private _game: createjs.Container;
 
         // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++
-        constructor() {
+        constructor(game: createjs.Container) {
             this.score = 0;
             this.lives = 5;
             this._livesLabel = new createjs.Text("Lives: ", "40px Consolas", "#ffff00");
