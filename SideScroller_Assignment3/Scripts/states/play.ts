@@ -6,6 +6,7 @@
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/nemo.ts" />
 /// <reference path="../objects/scoreboard.ts" />
+/// <reference path="../../constants.ts" />
 
 
 
@@ -62,36 +63,34 @@ module states {
             return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
         } // distance end
 
-        // check collision between nemo and any bee object
-        private nemoAndBees(bee: objects.Bee) {
+     
+        // CHeck Collision Method
+        checkCollision(collider: objects.GameObject) {
             var p1: createjs.Point = new createjs.Point();
             var p2: createjs.Point = new createjs.Point();
             p1.x = this.nemo.x;
             p1.y = this.nemo.y;
-            p2.x = bee.x;
-            p2.y = bee.y;
-            if (this.distance(p1, p2) < ((this.nemo.height / 2) + (bee.height / 2))) {
-                createjs.Sound.play("thunder");
-                this.scoreboard.lives -= 1;
-                bee._reset();
-
+            p2.x = collider.x;
+            p2.y = collider.y;
+            // Check for Collision
+            if (this.distance(p2, p1) < ((this.nemo.height * 0.5) + (collider.height * 0.5))) {
+                if (!collider.isColliding) { // Collision has occurred
+                    createjs.Sound.play(collider.soundString);
+                    collider.isColliding = true;
+                    switch (collider.name) {
+                        case "ring":
+                            this.scoreboard.score += 100;
+                           
+                            break;
+                        case "bee":
+                            this.scoreboard.lives--;
+                            break;
+                    }
+                }
+            } else {
+                collider.isColliding = false;
             }
-        }
-
-        // check collision between nemo and ring
-        private nemoAndRing() {
-            var p1: createjs.Point = new createjs.Point();
-            var p2: createjs.Point = new createjs.Point();
-            p1.x = this.nemo.x;
-            p1.y = this.nemo.y;
-            p2.x = this.ring.x;
-            p2.y = this.ring.y;
-            if (this.distance(p1, p2) < ((this.ring.height / 2) + (this.ring.height / 2))) {
-                createjs.Sound.play("yay");
-                this.scoreboard.score += 100;
-                this.ring._reset();
-            }
-        }
+        } // checkCollision end
 
         // UPDATE METHOD
         public update() {
@@ -103,10 +102,10 @@ module states {
             if (this.scoreboard.lives > 0) {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                     this.bees[cloud].update();
-                    this.nemoAndBees(this.bees[cloud]);
+                    this.checkCollision(this.bees[cloud]);
                 }
 
-                this.nemoAndRing();
+                this.checkCollision(this.ring);
             }
 
             this.scoreboard.update();

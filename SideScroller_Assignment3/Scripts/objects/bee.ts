@@ -5,7 +5,7 @@
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             super("bee");
-
+            this.name = "bee";
             this.soundString = "thunder";
 
             this._reset();

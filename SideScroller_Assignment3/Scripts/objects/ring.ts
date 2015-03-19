@@ -5,7 +5,7 @@
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             super("ring");
-
+            this.name = "ring";
             this._dx = 5;
             this.soundString = "yay";
 
