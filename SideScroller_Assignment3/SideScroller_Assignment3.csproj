@@ -97,6 +97,7 @@
     <TypeScriptCompile Include="Scripts\objects\bee.ts" />
     <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
+    <TypeScriptCompile Include="Scripts\objects\Label.ts" />
     <TypeScriptCompile Include="Scripts\objects\nemo.ts" />
     <TypeScriptCompile Include="Scripts\objects\ring.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />

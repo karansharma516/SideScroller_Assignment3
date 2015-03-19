@@ -11,6 +11,7 @@
 /// <reference path="objects/bee.ts" />
 /// <reference path="objects/ring.ts" />
 /// <reference path="objects/gameobject.ts" />
+/// <reference path="objects/label.ts" />
 // Game Variables
 var game;
 var stats = new Stats();
