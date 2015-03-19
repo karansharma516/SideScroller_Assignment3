@@ -4,6 +4,8 @@
 /// <reference path="typings/soundjs/soundjs.d.ts" />
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 /// <reference path="typings/stats/stats.d.ts" />
+/// <reference path="../constants.ts" />
+/// <reference path="objects/button.ts" />
 /// <reference path="objects/background.ts" />
 /// <reference path="objects/nemo.ts" />
 /// <reference path="objects/bee.ts" />
@@ -80,7 +82,7 @@ function gameLoop() {
     background.update();
     nemo.update();
     ring.update();
-    for (var cloud = 3; cloud > 0; cloud--) {
+    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
         bee[cloud].update();
         checkCollision(bee[cloud]);
     }
@@ -101,7 +103,7 @@ function main() {
     // Add plane to game
     nemo = new objects.Nemo();
     game.addChild(nemo);
-    for (var cloud = 3; cloud > 0; cloud--) {
+    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
         bee[cloud] = new objects.Bee();
         game.addChild(bee[cloud]);
     }
