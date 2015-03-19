@@ -70,8 +70,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\back.png" />
     <Content Include="assets\images\background.png" />
     <Content Include="assets\images\bee.png" />
+    <Content Include="assets\images\instruction.png" />
     <Content Include="assets\images\Nemo.png" />
     <Content Include="assets\images\play.png" />
     <Content Include="assets\images\playagain.png" />
@@ -105,6 +107,7 @@
     <TypeScriptCompile Include="Scripts\objects\ring.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />
+    <TypeScriptCompile Include="Scripts\states\instruction.ts" />
     <TypeScriptCompile Include="Scripts\states\menu.ts" />
     <TypeScriptCompile Include="Scripts\states\play.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />

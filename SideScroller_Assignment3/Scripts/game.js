@@ -16,6 +16,7 @@
 /// <reference path="states/play.ts" />
 /// <reference path="states/menu.ts" />
 /// <reference path="states/gameover.ts" />
+/// <reference path="states/instruction.ts" />
 // Game Variables
 var stats = new Stats();
 var canvas;
@@ -36,6 +37,7 @@ var stateChanged = false;
 var gameOver;
 var gamePlay;
 var menu;
+var instruction;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "bee", src: "assets/images/bee.png" },
@@ -44,7 +46,9 @@ var manifest = [
     { id: "nemo", src: "assets/images/Nemo.png" },
     { id: "tryAgainButton", src: "assets/images/tryagain.png" },
     { id: "playButton", src: "assets/images/play.png" },
+    { id: "backButton", src: "assets/images/back.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
+    { id: "instructionButton", src: "assets/images/instruction.png" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
 ];
@@ -101,6 +105,11 @@ function changeState(state) {
             // instantiate game over screen
             gameOver = new states.GameOver();
             currentStateFunction = gameOver;
+            break;
+        case constants.INSTRUCTION_STATE:
+            // instantiate game over screen
+            instruction = new states.Instruction();
+            currentStateFunction = instruction;
             break;
     }
 }

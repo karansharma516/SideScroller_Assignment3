@@ -8,6 +8,7 @@
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../../constants.ts" />
 /// <reference path="gameover.ts" />
+/// <reference path="instruction.ts" />
 
 
 

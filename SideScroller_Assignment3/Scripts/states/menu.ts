@@ -7,6 +7,7 @@
 /// <reference path="../objects/ring.ts" />
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../../constants.ts" />
+/// <reference path="instruction.ts" />
 
 
 module states {
@@ -19,6 +20,7 @@ module states {
         public playButton: objects.Button;
 
         public mailPilotLabel: objects.Label;
+        public instructionButton: objects.Button;
 
         public play: boolean = false;
        
@@ -49,12 +51,25 @@ module states {
 
             this.game.addChild(this.playButton);
  
+            // instruction button
+            this.instructionButton = new objects.Button("instructionButton", 450, 280);
+            this.instructionButton.on("click", this.instructionClicked, this);
+
+            this.game.addChild(this.instructionButton);
+
             // Add Game Container to Stage
             stage.addChild(this.game);
         } // Constructor
 
         public playClicked() {
             this.play = true;
+        }
+
+        public instructionClicked() {
+            this.game.removeAllChildren();
+            stage.removeChild(this.game);
+            currentState = constants.INSTRUCTION_STATE;
+            changeState(currentState);
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
