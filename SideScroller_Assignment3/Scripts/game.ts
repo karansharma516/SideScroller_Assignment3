@@ -37,6 +37,8 @@ var finalScore: number = 0;
 var highScore = 0;
 var score: objects.ScoreBoard;
 
+var bee: number;
+
 // state variables
 var currentState: number;
 var currentStateFunction: any;

@@ -24,6 +24,7 @@ module states {
         public background: objects.Background;
         public scoreboard: objects.ScoreBoard;
 
+
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             // Instantiate Game Container
@@ -44,9 +45,9 @@ module states {
             this.game.addChild(this.nemo);
 
             // Add clouds to game
-            for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.bees[cloud] = new objects.Bee();
-                this.game.addChild(this.bees[cloud]);
+            for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
+                this.bees[bee] = new objects.Bee();
+                this.game.addChild(this.bees[bee]);
             }
 
             this.scoreboard = new objects.ScoreBoard(this.game);
@@ -82,10 +83,11 @@ module states {
                     switch (collider.name) {
                         case "ring":
                             this.scoreboard.score += 100;
-                           
+                            this.ring._reset();
                             break;
                         case "bee":
                             this.scoreboard.lives--;
+                            this.bees[bee]._reset();
                             break;
                     }
                 }
@@ -102,9 +104,9 @@ module states {
             this.ring.update();
 
             if (this.scoreboard.lives > 0) {
-                for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                    this.bees[cloud].update();
-                    this.checkCollision(this.bees[cloud]);
+                for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
+                    this.bees[bee].update();
+                    this.checkCollision(this.bees[bee]);
                 }
 
                 this.checkCollision(this.ring);

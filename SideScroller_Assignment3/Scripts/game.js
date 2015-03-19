@@ -27,6 +27,7 @@ var finalText;
 var finalScore = 0;
 var highScore = 0;
 var score;
+var bee;
 // state variables
 var currentState;
 var currentStateFunction;
