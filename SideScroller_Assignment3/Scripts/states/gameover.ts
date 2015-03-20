@@ -41,7 +41,7 @@ module states {
             this.gameOverLabel.regY = this.gameOverLabel.getMeasuredLineHeight() * 0.5;
             this.game.addChild(this.gameOverLabel);
 
-            this.gameWinLabel = new objects.Label(320, 40, finalText.toString());
+            this.gameWinLabel = new objects.Label(320, 40, finalText);
             this.gameWinLabel.font = "60px Consolas";
             this.gameWinLabel.regX = this.gameWinLabel.getMeasuredWidth() * 0.5;
             this.gameWinLabel.regY = this.gameWinLabel.getMeasuredLineHeight() * 0.5;

@@ -9,6 +9,7 @@
 /// <reference path="../../constants.ts" />
 /// <reference path="gameover.ts" />
 /// <reference path="instruction.ts" />
+/// <reference path="../objects/bullet.ts" />
 
 
 
@@ -24,7 +25,7 @@ module states {
         public bees: objects.Bee[] = [];
         public background: objects.Background;
         public scoreboard: objects.ScoreBoard;
-
+        
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
@@ -45,7 +46,7 @@ module states {
             this.nemo = new objects.Nemo();
             this.game.addChild(this.nemo);
 
-            // Add clouds to game
+           // Add clouds to game
             for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                 this.bees[bee] = new objects.Bee();
                 this.game.addChild(this.bees[bee]);
@@ -53,11 +54,22 @@ module states {
 
             this.scoreboard = new objects.ScoreBoard(this.game);
 
-
-
+           
+          //  stage.addEventListener("click", this.fire);
+           
             stage.addChild(this.game);
+
         } // constructor end
 
+
+        //public fire(): void {
+
+        //    bullet = new objects.Bullet(80, stage.mouseY);
+        //    stage.addChild(bullet);
+        //    // this.bullets.unshift(this.bulletnum);
+        //   // stage.addChild(this.bullets[0]);
+
+        //  }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -90,6 +102,10 @@ module states {
                             this.scoreboard.lives--;
                             this.bees[bee]._reset();
                             break;
+                        //case "bullet":
+                        //  //  this.scoreboard.lives--;
+                        //    this.bees[bee]._reset();
+                        //    break;
                     }
                 }
             } else {
@@ -104,6 +120,20 @@ module states {
             this.nemo.update();
             this.ring.update();
 
+            //for (var i = 0; i < bullets.length; i++) {
+            //    bullet[i].update();
+            //}
+
+           
+
+            //if (bullet != undefined) {
+                
+            //    bullet.update();
+                
+            //  }
+
+              //bullet.update();
+
             if (this.scoreboard.lives > 0) {
                 for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                     this.bees[bee].update();
@@ -111,6 +141,7 @@ module states {
                 }
 
                 this.checkCollision(this.ring);
+               
             }
 
             this.scoreboard.update();
@@ -131,6 +162,24 @@ module states {
               
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
+            }
+
+            if (this.scoreboard.score >= 5000) {
+                createjs.Sound.play("yay");
+                createjs.Sound.stop();
+                this.game.removeAllChildren();
+                stage.removeAllChildren();
+
+                if (finalScore > highScore) {
+                    highScore = finalScore;
+                }
+
+                finalText = "YOU WON";
+                finalScore = this.scoreboard.score;
+
+                currentState = constants.GAME_OVER_STATE;
+                stateChanged = true;
+
             }
         } // update method end
 

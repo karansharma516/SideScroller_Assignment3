@@ -8,6 +8,7 @@
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../../constants.ts" />
 /// <reference path="instruction.ts" />
+/// <reference path="../objects/bullet.ts" />
 
 
 module states {
@@ -38,7 +39,7 @@ module states {
             this.game.addChild(this.background);
 
             //Game Over Label
-            this.mailPilotLabel = new objects.Label(320, 40, "NEMO RING CHASER");
+            this.mailPilotLabel = new objects.Label(320, 40, "NEMO FIGHTER");
             this.mailPilotLabel.font = "60px Consolas";
             this.mailPilotLabel.regX = this.mailPilotLabel.getMeasuredWidth() * 0.5;
             this.mailPilotLabel.regY = this.mailPilotLabel.getMeasuredLineHeight() * 0.5;

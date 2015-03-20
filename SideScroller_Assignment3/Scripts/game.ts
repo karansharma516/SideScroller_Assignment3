@@ -18,11 +18,15 @@
 /// <reference path="states/menu.ts" />
 /// <reference path="states/gameover.ts" />
 /// <reference path="states/instruction.ts" />
+/// <reference path="objects/bullet.ts" />
 
 
 
 
 // Game Variables
+
+// var bullet: objects.Bullet;
+// var bullets: objects.Bullet [] = [];
 
 var stats: Stats = new Stats();
 var canvas;
@@ -61,10 +65,11 @@ var manifest = [
     { id: "tryAgainButton", src: "assets/images/tryagain.png" },
     { id: "playButton", src: "assets/images/play.png" },
     { id: "backButton", src: "assets/images/back.png" },
-    { id: "engine", src: "assets/audio/engine.ogg" },
+    { id: "bullet", src: "assets/images/bullet.png" },
+    { id: "engine", src: "assets/audio/engine.mp3" },
     { id: "instructionButton", src: "assets/images/instruction.png" },
-    { id: "yay", src: "assets/audio/yay.ogg" },
-    { id: "thunder", src: "assets/audio/thunder.ogg" }
+    { id: "yay", src: "assets/audio/ring.mp3" },
+    { id: "thunder", src: "assets/audio/thunder.wav" }
 
 ];
 

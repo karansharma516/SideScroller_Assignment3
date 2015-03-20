@@ -1,4 +1,7 @@
-﻿module objects {
+﻿/// <reference path="bullet.ts" />
+
+
+module objects {
 
     export class Nemo extends createjs.Bitmap {
         public width: number;
@@ -23,6 +26,7 @@
 
         public update() {
             this.y = stage.mouseY;
+            
         }
     }
 
