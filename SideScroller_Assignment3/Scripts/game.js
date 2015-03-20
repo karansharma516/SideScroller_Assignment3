@@ -18,6 +18,7 @@
 /// <reference path="states/gameover.ts" />
 /// <reference path="states/instruction.ts" />
 /// <reference path="objects/bullet.ts" />
+/// <reference path="objects/gem.ts" />
 // Game Variables
 // var bullet: objects.Bullet;
 // var bullets: objects.Bullet [] = [];
@@ -49,6 +50,7 @@ var manifest = [
     { id: "nemo", src: "assets/images/Nemo.png" },
     { id: "tryAgainButton", src: "assets/images/tryagain.png" },
     { id: "playButton", src: "assets/images/play.png" },
+    { id: "gem", src: "assets/images/gems.png" },
     { id: "backButton", src: "assets/images/back.png" },
     { id: "bullet", src: "assets/images/bullet.png" },
     { id: "engine", src: "assets/audio/engine.mp3" },

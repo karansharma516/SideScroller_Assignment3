@@ -7,6 +7,7 @@
 /// <reference path="../objects/bee.ts" />
 /// <reference path="../objects/background.ts" />
 /// <reference path="../../constants.ts" />
+/// <reference path="../objects/gem.ts" />
 
 
 

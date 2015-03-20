@@ -10,6 +10,7 @@
 /// <reference path="gameover.ts" />
 /// <reference path="instruction.ts" />
 /// <reference path="../objects/bullet.ts" />
+/// <reference path="../objects/gem.ts" />
 
 
 
@@ -25,7 +26,7 @@ module states {
         public bees: objects.Bee[] = [];
         public background: objects.Background;
         public scoreboard: objects.ScoreBoard;
-        
+        public gem: objects.Gem;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
@@ -45,6 +46,10 @@ module states {
             // Add nemo to game
             this.nemo = new objects.Nemo();
             this.game.addChild(this.nemo);
+
+            // Add gem to game
+            this.gem = new objects.Gem();
+            this.game.addChild(this.gem);
 
            // Add clouds to game
             for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
@@ -102,10 +107,11 @@ module states {
                             this.scoreboard.lives--;
                             this.bees[bee]._reset();
                             break;
-                        //case "bullet":
-                        //  //  this.scoreboard.lives--;
-                        //    this.bees[bee]._reset();
-                        //    break;
+                        case "gem":
+                            this.scoreboard.lives++;
+                            this.gem._reset();
+                            break;
+                            
                     }
                 }
             } else {
@@ -119,7 +125,7 @@ module states {
             this.background.update();
             this.nemo.update();
             this.ring.update();
-
+            this.gem.update();
             //for (var i = 0; i < bullets.length; i++) {
             //    bullet[i].update();
             //}
@@ -141,7 +147,7 @@ module states {
                 }
 
                 this.checkCollision(this.ring);
-               
+                this.checkCollision(this.gem);
             }
 
             this.scoreboard.update();

@@ -9,6 +9,7 @@
 /// <reference path="../../constants.ts" />
 /// <reference path="instruction.ts" />
 /// <reference path="../objects/bullet.ts" />
+/// <reference path="../objects/gem.ts" />
 
 
 module states {
