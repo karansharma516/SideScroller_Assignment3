@@ -1,4 +1,11 @@
-﻿module objects {
+﻿/**
+File: Gem.ts
+Author: Karan Sharma
+Description:  This class set the position of the gem objects
+Last Modified : March 16, 2015
+*/
+
+module objects {
 
     export class Gem extends objects.GameObject {
 

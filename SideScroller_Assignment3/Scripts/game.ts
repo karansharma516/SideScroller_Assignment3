@@ -1,4 +1,75 @@
-﻿/// <reference path="typings/createjs-lib/createjs-lib.d.ts" />
+﻿/**
+File: game.ts
+Author: Karan Sharma
+Description: This game Nemo Fighter is created with the extensive use of javascript.
+At the begining of the game user will see the two buttons, one is for the instructions
+which tells the user how to play this game and about the controls and other button is
+to selct the player of the game. Once user select his player then game will start and
+it displays the score board at the top of the screen and also displays the message 
+When player wins or lost.
+Last Modified : March 19, 2015
+
+Version History:
+
+Version #1.0 
+- created the base game by adding the assets and initiate it
+
+Version #1.1
+- added game objects to the game and implement it
+
+Version #1.2
+- added the sound effects and tested the collision working
+
+Version #1.3
+- added game container to the game
+
+Version #1.4
+- added button class and contant file to the game
+
+Version #1.5
+- added Label class to the game
+
+Version #1.6
+- added scoreboard object which will displays the scoreboard of the game
+
+Version #1.7
+- created the play sate and encapsulated the game into play state 
+
+Version #1.8
+- made changes in the check collision and made it working
+
+Version #1.9
+- added game over state to the game which will displays the game over message
+
+Version #1.10
+- added menu state to the game and the play button is displayed and the Instruction button.
+
+Version #1.11
+- added functionality of destroying the bees and rings whenever its collides with Nemo
+
+Version #1.12
+- added instruction state to the game which will displays the instructions of the game to the user
+
+Version #1.13 
+- added and changed the sound effects of the game 
+
+Version #1.14
+- added gem object to the game whic will increase the lives of the player
+
+Version #1.15
+- added player selection state to the game by which user can select their own player
+- remove play button from the main screen and replaced with the player select button
+
+Version #1.16
+- completed most of the internal documentation and remove non usable code from the game.
+- made changes in the instruction message
+
+*/
+
+
+
+
+/// <reference path="typings/createjs-lib/createjs-lib.d.ts" />
 /// <reference path="typings/easeljs/easeljs.d.ts" />
 /// <reference path="typings/tweenjs/tweenjs.d.ts" />
 /// <reference path="typings/soundjs/soundjs.d.ts" />
@@ -24,26 +95,18 @@
 /// <reference path="states/select.ts" />
 
 
-
-
 // Game Variables
-
-// var bullet: objects.Bullet;
-// var bullets: objects.Bullet [] = [];
-
 var stats: Stats = new Stats();
 var canvas;
 var stage: createjs.Stage;
 var assetLoader: createjs.LoadQueue;
 
-// Game Objects
-
-var finalText: string;
 
 // Score Variables
 var finalScore: number = 0;
 var highScore = 0;
 var score: objects.ScoreBoard;
+var finalText: string;
 
 var bee: number;
 
@@ -84,8 +147,9 @@ var manifest = [
 
 ];
 
-// Game Objects 
-
+/*
+ * This function preloads all of the assets in the game.
+ */
 function preload() {
     assetLoader = new createjs.LoadQueue(); // instantiated assetLoader
     assetLoader.installPlugin(createjs.Sound);
@@ -93,7 +157,9 @@ function preload() {
     assetLoader.loadManifest(manifest); // loading my asset manifest
 }
 
-
+/*
+ * This function initializes the game by setting up the canvas, FPS and enabling mouseover
+ */
 function init() {
     canvas = document.getElementById("canvas");
     stage = new createjs.Stage(canvas);
@@ -115,7 +181,9 @@ function setupStats() {
     document.body.appendChild(stats.domElement);
 }
 
-
+/*
+ * This function updates the game as it is being played.
+ */
 function gameLoop() {
     stats.begin(); // Begin metering
 
@@ -131,7 +199,9 @@ function gameLoop() {
     stats.end(); // End metering
 }
 
-
+/*
+ * This function call the different states.
+ */
 function changeState(state: number): void {
     // Launch Various "screens"
     switch (state) {

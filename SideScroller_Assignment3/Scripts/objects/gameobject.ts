@@ -1,4 +1,10 @@
-﻿module objects {
+﻿/**
+File: GameObject.ts
+Author: Karan Sharma
+Description:  This class is the base class for the other class
+Last Modified : March 16, 2015
+*/
+module objects {
 
     export class GameObject extends createjs.Bitmap {
         // PUBLIC VARIABLES

@@ -1,4 +1,11 @@
-﻿module objects {
+﻿/**
+File: background.ts
+Author: Karan Sharma
+Description: This class the position of the background of the game
+Last Modified : March 16, 2015
+*/
+
+module objects {
 
     export class Background extends createjs.Bitmap {
         // PUBLIC VARIABLES
@@ -35,10 +42,11 @@
 
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
-
+         /**
+         * This method updates the backgroud and call the check bounds method
+         */
         public update() {
             this.x -= this._dx;
-
             this._checkBounds();
         }
 

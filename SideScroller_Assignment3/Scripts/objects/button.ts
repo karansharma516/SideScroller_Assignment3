@@ -1,7 +1,7 @@
 ﻿module objects {
     export class Button extends createjs.Bitmap {
 
-        // PRIVATE INSTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++++
+        // CONSTRUCTOR +++++++++++++++++++++++++++++++++++++++++++++++++
 
         constructor(stringPath: string, x: number, y: number) {
             super(assetLoader.getResult(stringPath));

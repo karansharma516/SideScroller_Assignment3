@@ -10,8 +10,12 @@
 /// <reference path="../objects/gem.ts" />
 
 
-
-
+/**
+File: gameOver.ts
+Author: Karan Sharma
+Description: This class displays the game over state when player lost or won. 
+Last Modified : March 19, 2015
+*/
 
 module states {
     // GAME OVER STATE CLASS
@@ -42,6 +46,7 @@ module states {
             this.gameOverLabel.regY = this.gameOverLabel.getMeasuredLineHeight() * 0.5;
             this.game.addChild(this.gameOverLabel);
 
+            // Game Win Label
             this.gameWinLabel = new objects.Label(320, 40, finalText);
             this.gameWinLabel.font = "60px Consolas";
             this.gameWinLabel.regX = this.gameWinLabel.getMeasuredWidth() * 0.5;
@@ -61,17 +66,16 @@ module states {
             this.game.addChild(this.tryAgainButton);
             this.tryAgainButton.on("click", this.tryAgainClicked, this);
 
-           
-
             // Add Game Container to Stage
             stage.addChild(this.game);
         } // Constructor
 
+         // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         public tryAgainClicked() {
             this.tryAgain = true;
         }
 
-        // PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+       // UPDATE METHOD
         public update() {
 
             this.background.update();

@@ -1,4 +1,11 @@
-﻿module objects {
+﻿/**
+File: Bee.ts
+Author: Karan Sharma
+Description:  This class set the position of the bee objects
+Last Modified : March 16, 2015
+*/
+
+module objects {
 
     export class Bee extends objects.GameObject {
 
@@ -27,12 +34,9 @@
             }
         }
 
-
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
-
         public update() {
             this.x -= this._dx;
-
             this._checkBounds();
         }
 

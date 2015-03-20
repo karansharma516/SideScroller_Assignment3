@@ -13,13 +13,17 @@
 /// <reference path="../objects/nemo_2.ts" />
 
 
-
-
+/**
+File: gamePlay.ts
+Author: Karan Sharma
+Description: This class displays the plays the game when the user selcts the player 2. 
+Last Modified : March 19, 2015
+*/
 
 module states {
     // PLAY STATE
     export class GamePlay {
-        // INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++
+        // PUBLIC VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++
         public game: createjs.Container;
         public nemo_2: objects.Nemo_2;
         public ring: objects.Ring;
@@ -58,23 +62,10 @@ module states {
             }
 
             this.scoreboard = new objects.ScoreBoard(this.game);
-
-           
-            //  stage.addEventListener("click", this.fire);
-           
+                     
             stage.addChild(this.game);
 
         } // constructor end
-
-
-        //public fire(): void {
-
-        //    bullet = new objects.Bullet(80, stage.mouseY);
-        //    stage.addChild(bullet);
-        //    // this.bullets.unshift(this.bulletnum);
-        //   // stage.addChild(this.bullets[0]);
-
-        //  }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -111,7 +102,6 @@ module states {
                             this.scoreboard.lives++;
                             this.gem._reset();
                             break;
-
                     }
                 }
             } else {
@@ -121,25 +111,11 @@ module states {
 
         // UPDATE METHOD
         public update() {
-
             this.background.update();
             this.nemo_2.update();
             this.ring.update();
             this.gem.update();
-            //for (var i = 0; i < bullets.length; i++) {
-            //    bullet[i].update();
-            //}
-
-           
-
-            //if (bullet != undefined) {
-                
-            //    bullet.update();
-                
-            //  }
-
-            //bullet.update();
-
+           // check collisions
             if (this.scoreboard.lives > 0) {
                 for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                     this.bees[bee].update();
@@ -151,7 +127,7 @@ module states {
             }
 
             this.scoreboard.update();
-
+            // check if player lost 
             if (this.scoreboard.lives < 1) {
                 createjs.Sound.play("thunder");
                 createjs.Sound.stop();
@@ -169,7 +145,7 @@ module states {
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
             }
-
+            // check if player won
             if (this.scoreboard.score >= 5000) {
                 createjs.Sound.play("yay");
                 createjs.Sound.stop();

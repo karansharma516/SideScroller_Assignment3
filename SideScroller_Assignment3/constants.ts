@@ -1,4 +1,11 @@
-﻿module constants {
+﻿/**
+File: Constants.ts
+Author: Karan Sharma
+Description: This class has all constant variables that are used in the game 
+Last Modified : March 19, 2015
+*/
+
+module constants {
     // State Machine Constants
     export var MENU_STATE: number = 0;
     export var PLAY_STATE: number = 1;

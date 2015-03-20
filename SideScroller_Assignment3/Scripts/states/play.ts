@@ -11,9 +11,12 @@
 /// <reference path="instruction.ts" />
 /// <reference path="../objects/gem.ts" />
 
-
-
-
+/**
+File: Select.ts
+Author: Karan Sharma
+Description: This class ask the user to selct your player and then starts the game depends on the selection of the user 
+Last Modified : March 19, 2015
+*/
 
 module states {
     // PLAY STATE
@@ -55,11 +58,8 @@ module states {
                 this.bees[bee] = new objects.Bee();
                 this.game.addChild(this.bees[bee]);
             }
-
+            // add scoreboards to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
-
-           
-         
            
             stage.addChild(this.game);
 
@@ -100,7 +100,6 @@ module states {
                             this.scoreboard.lives++;
                             this.gem._reset();
                             break;
-                            
                     }
                 }
             } else {
@@ -110,12 +109,11 @@ module states {
 
         // UPDATE METHOD
         public update() {
-
-            this.background.update();
-            this.nemo.update();
+            this.background.update(); 
+            this.nemo.update(); 
             this.ring.update();
             this.gem.update();
-          
+           // check collisions
             if (this.scoreboard.lives > 0) {
                 for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                     this.bees[bee].update();
@@ -127,7 +125,7 @@ module states {
             }
 
             this.scoreboard.update();
-
+            // check for the lost of the player
             if (this.scoreboard.lives < 1) {
                 createjs.Sound.play("thunder");
                 createjs.Sound.stop();
@@ -146,8 +144,7 @@ module states {
                 stateChanged = true;
             }
 
-                     
-
+            // check for the won of the player
             if (this.scoreboard.score >= 5000) {
                 createjs.Sound.play("yay");
                 createjs.Sound.stop();

@@ -1,4 +1,11 @@
-﻿module objects {
+﻿/**
+File: ScoreBoard.ts
+Author: Karan Sharma
+Description:  This class set the displays the score of the player
+Last Modified : March 19, 2015
+*/
+
+module objects {
     // SCOREBOARD CLASS ++++++++++++++++++++++++++++++++++++++++
     export class ScoreBoard {
         // PUBLIC INSTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++++
