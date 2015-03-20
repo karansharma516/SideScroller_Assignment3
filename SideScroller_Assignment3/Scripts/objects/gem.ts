@@ -7,7 +7,7 @@
             super("gem");
             this.name = "gem";
             this._dx = 3;
-            this.soundString = "yay";
+            this.soundString = "gemSound";
 
             this._reset();
 
@@ -34,7 +34,7 @@
 
         public update() {
             this.x -= this._dx;
-
+            
             this._checkBounds();
         }
 

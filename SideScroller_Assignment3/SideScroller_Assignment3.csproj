@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="assets\audio\engine.mp3" />
     <Content Include="assets\audio\engine.ogg" />
+    <Content Include="assets\audio\gem.wav" />
     <Content Include="assets\audio\ring.mp3" />
     <Content Include="assets\audio\thunder.ogg" />
     <Content Include="assets\audio\thunder.wav" />
@@ -80,9 +81,13 @@
     <Content Include="assets\images\gems.png" />
     <Content Include="assets\images\instruction.png" />
     <Content Include="assets\images\Nemo.png" />
+    <Content Include="assets\images\nemo3.png" />
     <Content Include="assets\images\play.png" />
     <Content Include="assets\images\playagain.png" />
+    <Content Include="assets\images\player1.png" />
+    <Content Include="assets\images\player2.png" />
     <Content Include="assets\images\ring.png" />
+    <Content Include="assets\images\select.png" />
     <Content Include="assets\images\tryagain.png" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />
@@ -105,18 +110,20 @@
     <TypeScriptCompile Include="Scripts\game.ts" />
     <TypeScriptCompile Include="Scripts\objects\background.ts" />
     <TypeScriptCompile Include="Scripts\objects\bee.ts" />
-    <TypeScriptCompile Include="Scripts\objects\bullet.ts" />
     <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
     <TypeScriptCompile Include="Scripts\objects\gem.ts" />
     <TypeScriptCompile Include="Scripts\objects\Label.ts" />
     <TypeScriptCompile Include="Scripts\objects\nemo.ts" />
+    <TypeScriptCompile Include="Scripts\objects\nemo_2.ts" />
     <TypeScriptCompile Include="Scripts\objects\ring.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />
+    <TypeScriptCompile Include="Scripts\states\gamePlay.ts" />
     <TypeScriptCompile Include="Scripts\states\instruction.ts" />
     <TypeScriptCompile Include="Scripts\states\menu.ts" />
     <TypeScriptCompile Include="Scripts\states\play.ts" />
+    <TypeScriptCompile Include="Scripts\states\select.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />

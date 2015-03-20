@@ -4,6 +4,8 @@
     export var PLAY_STATE: number = 1;
     export var GAME_OVER_STATE: number = 2;
     export var INSTRUCTION_STATE: number = 3;
+    export var SELECT_STATE: number = 4;
+    export var PLAY_STATE_2: number = 5;
 
     // Game Constants
     export var CLOUD_NUM: number = 3;

@@ -8,7 +8,6 @@
 /// <reference path="../objects/scoreboard.ts" />
 /// <reference path="../../constants.ts" />
 /// <reference path="instruction.ts" />
-/// <reference path="../objects/bullet.ts" />
 /// <reference path="../objects/gem.ts" />
 
 
@@ -20,7 +19,7 @@ module states {
         public game: createjs.Container;
         public background: objects.Background;
         public playButton: objects.Button;
-
+        public selectButton: objects.Button;
         public mailPilotLabel: objects.Label;
         public instructionButton: objects.Button;
 
@@ -47,11 +46,11 @@ module states {
             this.game.addChild(this.mailPilotLabel);
 
 
-            //Play Button
-            this.playButton = new objects.Button("playButton", 150, 280);
-            this.playButton.on("click", this.playClicked, this);
+            ////Play Button
+            //this.playButton = new objects.Button("playButton", 150, 280);
+            //this.playButton.on("click", this.playClicked, this);
 
-            this.game.addChild(this.playButton);
+            //this.game.addChild(this.playButton);
  
             // instruction button
             this.instructionButton = new objects.Button("instructionButton", 450, 280);
@@ -59,18 +58,31 @@ module states {
 
             this.game.addChild(this.instructionButton);
 
+            // instruction button
+            this.selectButton = new objects.Button("selectButton", 150, 280);
+            this.selectButton.on("click", this.selectClicked, this);
+
+            this.game.addChild(this.selectButton);
+
             // Add Game Container to Stage
             stage.addChild(this.game);
         } // Constructor
 
-        public playClicked() {
-            this.play = true;
-        }
+        //public playClicked() {
+        //    this.play = true;
+        //}
 
         public instructionClicked() {
             this.game.removeAllChildren();
             stage.removeChild(this.game);
             currentState = constants.INSTRUCTION_STATE;
+            changeState(currentState);
+        }
+
+        public selectClicked() {
+            this.game.removeAllChildren();
+            stage.removeChild(this.game);
+            currentState = constants.SELECT_STATE;
             changeState(currentState);
         }
 
@@ -80,12 +92,12 @@ module states {
             this.background.update();
           
 
-            if (this.play) {
-                this.game.removeAllChildren();
-                stage.removeChild(this.game);
-                currentState = constants.PLAY_STATE;
-                stateChanged = true;
-            }
+            //if (this.play) {
+            //    this.game.removeAllChildren();
+            //    stage.removeChild(this.game);
+            //    currentState = constants.PLAY_STATE;
+            //    stateChanged = true;
+            //}
 
            
 

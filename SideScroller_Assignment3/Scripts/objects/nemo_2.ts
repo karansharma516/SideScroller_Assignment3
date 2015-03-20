@@ -3,13 +3,13 @@
 
 module objects {
 
-    export class Nemo extends createjs.Bitmap {
+    export class Nemo_2 extends createjs.Bitmap {
         public width: number;
         public height: number;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-            super(assetLoader.getResult("nemo"));
+            super(assetLoader.getResult("nemo_2"));
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
@@ -26,8 +26,8 @@ module objects {
 
         public update() {
             this.y = stage.mouseY;
-            
+
         }
     }
 
-}  
+}   

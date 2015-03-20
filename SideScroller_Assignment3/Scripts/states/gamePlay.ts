@@ -10,6 +10,7 @@
 /// <reference path="gameover.ts" />
 /// <reference path="instruction.ts" />
 /// <reference path="../objects/gem.ts" />
+/// <reference path="../objects/nemo_2.ts" />
 
 
 
@@ -17,10 +18,10 @@
 
 module states {
     // PLAY STATE
-    export class Play {
+    export class GamePlay {
         // INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++
         public game: createjs.Container;
-        public nemo: objects.Nemo;
+        public nemo_2: objects.Nemo_2;
         public ring: objects.Ring;
         public bees: objects.Bee[] = [];
         public background: objects.Background;
@@ -43,14 +44,14 @@ module states {
 
 
             // Add nemo to game
-            this.nemo = new objects.Nemo();
-            this.game.addChild(this.nemo);
+            this.nemo_2 = new objects.Nemo_2();
+            this.game.addChild(this.nemo_2);
 
             // Add gem to game
             this.gem = new objects.Gem();
             this.game.addChild(this.gem);
 
-           // Add clouds to game
+            // Add clouds to game
             for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                 this.bees[bee] = new objects.Bee();
                 this.game.addChild(this.bees[bee]);
@@ -59,11 +60,21 @@ module states {
             this.scoreboard = new objects.ScoreBoard(this.game);
 
            
-         
+            //  stage.addEventListener("click", this.fire);
            
             stage.addChild(this.game);
 
         } // constructor end
+
+
+        //public fire(): void {
+
+        //    bullet = new objects.Bullet(80, stage.mouseY);
+        //    stage.addChild(bullet);
+        //    // this.bullets.unshift(this.bulletnum);
+        //   // stage.addChild(this.bullets[0]);
+
+        //  }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -78,12 +89,12 @@ module states {
         checkCollision(collider: objects.GameObject) {
             var p1: createjs.Point = new createjs.Point();
             var p2: createjs.Point = new createjs.Point();
-            p1.x = this.nemo.x;
-            p1.y = this.nemo.y;
+            p1.x = this.nemo_2.x;
+            p1.y = this.nemo_2.y;
             p2.x = collider.x;
             p2.y = collider.y;
             // Check for Collision
-            if (this.distance(p2, p1) < ((this.nemo.height * 0.5) + (collider.height * 0.5))) {
+            if (this.distance(p2, p1) < ((this.nemo_2.height * 0.5) + (collider.height * 0.5))) {
                 if (!collider.isColliding) { // Collision has occurred
                     createjs.Sound.play(collider.soundString);
                     collider.isColliding = true;
@@ -100,7 +111,7 @@ module states {
                             this.scoreboard.lives++;
                             this.gem._reset();
                             break;
-                            
+
                     }
                 }
             } else {
@@ -112,10 +123,23 @@ module states {
         public update() {
 
             this.background.update();
-            this.nemo.update();
+            this.nemo_2.update();
             this.ring.update();
             this.gem.update();
-          
+            //for (var i = 0; i < bullets.length; i++) {
+            //    bullet[i].update();
+            //}
+
+           
+
+            //if (bullet != undefined) {
+                
+            //    bullet.update();
+                
+            //  }
+
+            //bullet.update();
+
             if (this.scoreboard.lives > 0) {
                 for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                     this.bees[bee].update();
@@ -136,17 +160,15 @@ module states {
                 stage.removeAllChildren();
 
                 if (finalScore > highScore) {
-                   highScore = finalScore;
-                 }
+                    highScore = finalScore;
+                }
 
                 finalText = "YOU LOST";
                 finalScore = this.scoreboard.score;
-              
+
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
             }
-
-                     
 
             if (this.scoreboard.score >= 5000) {
                 createjs.Sound.play("yay");
@@ -169,4 +191,4 @@ module states {
 
 
     }
-}  
+}   

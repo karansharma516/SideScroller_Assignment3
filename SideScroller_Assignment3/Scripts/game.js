@@ -17,8 +17,10 @@
 /// <reference path="states/menu.ts" />
 /// <reference path="states/gameover.ts" />
 /// <reference path="states/instruction.ts" />
-/// <reference path="objects/bullet.ts" />
 /// <reference path="objects/gem.ts" />
+/// <reference path="objects/nemo_2.ts" />
+/// <reference path="states/gameplay.ts" />
+/// <reference path="states/select.ts" />
 // Game Variables
 // var bullet: objects.Bullet;
 // var bullets: objects.Bullet [] = [];
@@ -42,20 +44,27 @@ var gameOver;
 var gamePlay;
 var menu;
 var instruction;
+var select;
+var playGame;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "bee", src: "assets/images/bee.png" },
     { id: "ring", src: "assets/images/ring.png" },
     { id: "background", src: "assets/images/background.png" },
     { id: "nemo", src: "assets/images/Nemo.png" },
+    { id: "nemo_2", src: "assets/images/Nemo3.png" },
     { id: "tryAgainButton", src: "assets/images/tryagain.png" },
     { id: "playButton", src: "assets/images/play.png" },
+    { id: "selectButton", src: "assets/images/select.png" },
+    { id: "player_1_Button", src: "assets/images/player1.png" },
+    { id: "player_2_Button", src: "assets/images/player2.png" },
     { id: "gem", src: "assets/images/gems.png" },
     { id: "backButton", src: "assets/images/back.png" },
     { id: "bullet", src: "assets/images/bullet.png" },
     { id: "engine", src: "assets/audio/engine.mp3" },
     { id: "instructionButton", src: "assets/images/instruction.png" },
     { id: "yay", src: "assets/audio/ring.mp3" },
+    { id: "gemSound", src: "assets/audio/gem.wav" },
     { id: "thunder", src: "assets/audio/thunder.wav" }
 ];
 // Game Objects 
@@ -116,6 +125,16 @@ function changeState(state) {
             // instantiate game over screen
             instruction = new states.Instruction();
             currentStateFunction = instruction;
+            break;
+        case constants.SELECT_STATE:
+            // instantiate game over screen
+            select = new states.Select();
+            currentStateFunction = select;
+            break;
+        case constants.PLAY_STATE_2:
+            // instantiate game play screen
+            playGame = new states.GamePlay();
+            currentStateFunction = playGame;
             break;
     }
 }
