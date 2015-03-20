@@ -23,16 +23,16 @@ module states {
         // Game Objects         
         public game: createjs.Container;
         public background: objects.Background;
+        public bees: objects.Bee[] = [];
         public playButton: objects.Button;
         public selectButton: objects.Button;
         public mailPilotLabel: objects.Label;
+        public label: objects.Label;
         public instructionButton: objects.Button;
         public play: boolean = false;
      
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-
-            createjs.Sound.play("engine", { loop: -1 });
 
             // Instantiate Game Container
             this.game = new createjs.Container();
@@ -41,12 +41,26 @@ module states {
             this.background = new objects.Background();
             this.game.addChild(this.background);
 
+            // Add clouds to game
+            for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
+                this.bees[bee] = new objects.Bee();
+                this.game.addChild(this.bees[bee]);
+            }
+
             //Game Over Label
             this.mailPilotLabel = new objects.Label(320, 40, "NEMO FIGHTER");
             this.mailPilotLabel.font = "60px Consolas";
             this.mailPilotLabel.regX = this.mailPilotLabel.getMeasuredWidth() * 0.5;
             this.mailPilotLabel.regY = this.mailPilotLabel.getMeasuredLineHeight() * 0.5;
             this.game.addChild(this.mailPilotLabel);
+
+            this.label = new objects.Label(320, 40, "PROTECT NEMO FROM ENEMIES");
+            this.label.font = "40px Consolas";
+            this.label.x = 320;
+            this.label.y = 150;
+           // this.label.regX = this.label.getMeasuredWidth() * 0.5;
+           // this.label.regY = this.label.getMeasuredLineHeight() * 0.5;        
+            this.game.addChild(this.label);
 
             // instruction button
             this.instructionButton = new objects.Button("instructionButton", 450, 280);
@@ -59,6 +73,8 @@ module states {
             this.selectButton.on("click", this.selectClicked, this);
 
             this.game.addChild(this.selectButton);
+
+            createjs.Sound.play("engine", { loop: -1 });
 
             // Add Game Container to Stage
             stage.addChild(this.game);
@@ -88,6 +104,9 @@ module states {
     // UPDATE METHOD
         public update() {
             this.background.update();
+            for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
+                this.bees[bee].update();
+              }
             stage.update(); // Refreshes our stage
 
         } // Update Method

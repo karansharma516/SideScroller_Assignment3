@@ -38,7 +38,7 @@ module states {
             var instructionsMessage: string = "Welcome to Nemo Fighter game,Nemo's was attacked by enemies, "
                 + "you need to save nemo from the bees and save his life. "
                 + "In order to win this game,you need to collect 5000 points!" 
-                + "you get the 100 points for each ring and increase lives by 1 for each gem" 
+                + "you get the 100 points for each ring and your lives increases by 1 by getting each gem. " 
                 + "Steer with the mouse, Lets See how many points you can Get!";
 
             this.instructionText = new createjs.Text(instructionsMessage, "30px Consolas", constants.LABEL_COLOUR);
@@ -70,6 +70,7 @@ module states {
             if (this.play) {
                 this.game.removeAllChildren();
                 stage.removeChild(this.game);
+                createjs.Sound.stop();
                 currentState = constants.MENU_STATE;
                 stateChanged = true;
             }

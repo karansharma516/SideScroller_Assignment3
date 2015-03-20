@@ -15,7 +15,7 @@ module constants {
     export var PLAY_STATE_2: number = 5;
 
     // Game Constants
-    export var CLOUD_NUM: number = 3;
+    export var CLOUD_NUM: number = 4;
     export var LABEL_FONT = "40px Consolas";
     export var LABEL_COLOUR = "#FFFF00";
     export var PLANE_LIVES = 3;

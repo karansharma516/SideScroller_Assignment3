@@ -64,6 +64,9 @@ Version #1.16
 - completed most of the internal documentation and remove non usable code from the game.
 - made changes in the instruction message
 
+Version #1.17
+- added text label to the menu state and made some changes in the sound effects
+
 */
 /// <reference path="typings/createjs-lib/createjs-lib.d.ts" />
 /// <reference path="typings/easeljs/easeljs.d.ts" />

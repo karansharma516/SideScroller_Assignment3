@@ -25,9 +25,6 @@ module objects {
             this.regY = this.height * 0.5;
 
             this.x = 80;
-
-            createjs.Sound.play("engine", { loop: -1 });
-
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++

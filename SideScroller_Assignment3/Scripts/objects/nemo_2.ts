@@ -26,8 +26,6 @@ module objects {
 
             this.x = 80;
 
-            createjs.Sound.play("engine", { loop: -1 });
-
         }
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
