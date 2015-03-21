@@ -130,7 +130,7 @@ var manifest = [
     { id: "ring", src: "assets/images/ring.png" },
     { id: "background", src: "assets/images/background.png" },
     { id: "nemo", src: "assets/images/Nemo.png" },
-    { id: "nemo_2", src: "assets/images/Nemo3.png" },
+    { id: "nemo_2", src: "assets/images/nemo3.png" },
     { id: "tryAgainButton", src: "assets/images/tryagain.png" },
     { id: "playButton", src: "assets/images/play.png" },
     { id: "selectButton", src: "assets/images/select.png" },

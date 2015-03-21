@@ -47,7 +47,7 @@ module states {
             this.game.addChild(this.player1_Image);
 
             // sets the position of the image of the player2
-            this.player2_Image = new createjs.Bitmap("assets/images/Nemo3.png");
+            this.player2_Image = new createjs.Bitmap("assets/images/nemo3.png");
             this.player2_Image.x = 400;
             this.player2_Image.y = 150;
             this.game.addChild(this.player2_Image);

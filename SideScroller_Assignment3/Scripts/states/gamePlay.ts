@@ -62,7 +62,7 @@ module states {
             }
 
             this.scoreboard = new objects.ScoreBoard(this.game);
-                     
+
             stage.addChild(this.game);
 
         } // constructor end
@@ -118,7 +118,7 @@ module states {
                 this.gem.update();
             }
             
-           // check collisions
+            // check collisions
             if (this.scoreboard.lives > 0) {
                 for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
                     this.bees[bee].update();
@@ -170,4 +170,4 @@ module states {
 
 
     }
-}   
+}    
