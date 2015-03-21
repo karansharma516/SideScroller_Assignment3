@@ -112,7 +112,12 @@ module states {
             this.background.update(); 
             this.nemo.update(); 
             this.ring.update();
-            this.gem.update();
+
+            if (this.scoreboard.score >= 3000) {
+                this.gem.update();
+
+            }
+            
            // check collisions
             if (this.scoreboard.lives > 0) {
                 for (bee = constants.CLOUD_NUM; bee > 0; bee--) {
@@ -143,6 +148,8 @@ module states {
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
             }
+
+           
 
             // check for the won of the player
             if (this.scoreboard.score >= 5000) {

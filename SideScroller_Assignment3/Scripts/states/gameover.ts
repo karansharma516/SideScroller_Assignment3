@@ -81,6 +81,7 @@ module states {
             this.background.update();
 
             if (this.tryAgain) {
+                createjs.Sound.play("buttonClick");
                 this.game.removeAllChildren();
                 stage.removeChild(this.game);
                 currentState = constants.MENU_STATE;

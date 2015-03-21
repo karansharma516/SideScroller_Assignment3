@@ -23,9 +23,8 @@ module objects {
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
         public _reset() {
 
-            // set the island to start at a random x value
-
-            // set the island to start at a random x value
+            
+            // set the gems to start at a random x value
             this.x = 640 + Math.floor(Math.random() * 640);
             this.y = Math.floor(Math.random() * 480);
         }

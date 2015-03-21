@@ -59,6 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\buttonClick.mp3" />
+    <Content Include="assets\audio\collision.wav" />
     <Content Include="assets\audio\engine.mp3" />
     <Content Include="assets\audio\engine.ogg" />
     <Content Include="assets\audio\gem.wav" />

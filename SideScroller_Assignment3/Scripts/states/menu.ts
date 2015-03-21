@@ -65,13 +65,11 @@ module states {
             // instruction button
             this.instructionButton = new objects.Button("instructionButton", 450, 280);
             this.instructionButton.on("click", this.instructionClicked, this);
-
             this.game.addChild(this.instructionButton);
 
             // instruction button
             this.selectButton = new objects.Button("selectButton", 150, 280);
             this.selectButton.on("click", this.selectClicked, this);
-
             this.game.addChild(this.selectButton);
 
             createjs.Sound.play("engine", { loop: -1 });
@@ -85,6 +83,7 @@ module states {
          * This method displays the instruction state
          */
         public instructionClicked() {
+            createjs.Sound.play("buttonClick");
             this.game.removeAllChildren();
             stage.removeChild(this.game);
             currentState = constants.INSTRUCTION_STATE;
@@ -95,6 +94,7 @@ module states {
          * This method displays the select state
          */
         public selectClicked() {
+            createjs.Sound.play("buttonClick");
             this.game.removeAllChildren();
             stage.removeChild(this.game);
             currentState = constants.SELECT_STATE;

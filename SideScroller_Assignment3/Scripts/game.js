@@ -31,30 +31,36 @@ Version #1.5
 
 Version #1.6
 - added scoreboard object which will displays the scoreboard of the game
+-In this version, we check that score increases whenever player hit with the ring and
+ lives decreases whenever it hits with the bees
 
 Version #1.7
 - created the play sate and encapsulated the game into play state
+-It makes program more clear and understandable to anybody.
 
 Version #1.8
 - made changes in the check collision and made it working
 
 Version #1.9
 - added game over state to the game which will displays the game over message
+- added try again button to the game over state which will take the user to the menu state.
 
 Version #1.10
 - added menu state to the game and the play button is displayed and the Instruction button.
 
 Version #1.11
 - added functionality of destroying the bees and rings whenever its collides with Nemo
+- In this version, bees are not destroyed when they collide with the player but then fix that error
 
 Version #1.12
 - added instruction state to the game which will displays the instructions of the game to the user
+-Added back  button to the instruction state which take the user to the main screen.
 
 Version #1.13
 - added and changed the sound effects of the game
 
 Version #1.14
-- added gem object to the game whic will increase the lives of the player
+- added gem object to the game which will increase the lives of the player
 
 Version #1.15
 - added player selection state to the game by which user can select their own player
@@ -66,6 +72,11 @@ Version #1.16
 
 Version #1.17
 - added text label to the menu state and made some changes in the sound effects
+
+Version #1.18
+-Added functionality that when player has the score of 3000 then player will start receiving gems which will increase the lives of the game.
+-Added sound of the button to the game.
+-Edit the instruction message.
 
 */
 /// <reference path="typings/createjs-lib/createjs-lib.d.ts" />
@@ -132,7 +143,8 @@ var manifest = [
     { id: "instructionButton", src: "assets/images/instruction.png" },
     { id: "yay", src: "assets/audio/ring.mp3" },
     { id: "gemSound", src: "assets/audio/gem.wav" },
-    { id: "thunder", src: "assets/audio/thunder.wav" }
+    { id: "buttonClick", src: "assets/audio/buttonClick.mp3" },
+    { id: "thunder", src: "assets/audio/collision.wav" }
 ];
 /*
  * This function preloads all of the assets in the game.

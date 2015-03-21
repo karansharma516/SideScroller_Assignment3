@@ -82,6 +82,7 @@ module states {
             this.background.update();
             // play the game by selecting the player1 
             if (this.player_1) {
+                createjs.Sound.play("buttonClick");
                 this.game.removeAllChildren();
                 stage.removeChild(this.game);
                 currentState = constants.PLAY_STATE;
@@ -90,6 +91,7 @@ module states {
 
             // play the game by selecting the player2
             if (this.player_2) {
+                createjs.Sound.play("buttonClick");
                 this.game.removeAllChildren();
                 stage.removeChild(this.game);
                 currentState = constants.PLAY_STATE_2;
